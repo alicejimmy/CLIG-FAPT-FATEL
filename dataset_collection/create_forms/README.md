@@ -1,3 +1,9 @@
+# Collect UPLL dataset details
+* 共有兩份問卷，分別為small mammals小型哺乳類問卷、trees樹問卷
+* 每份問卷皆有500題單選題，每題會給一張隨機的圖片及五個選項，標註者將選出他認為這張圖會是哪個物種的圖片
+* 為了方便標註者填寫，每份問卷被拆成5個小問卷，每個小問卷皆有100題
+* 標註者們問卷填寫的時間為(2024/2/21-2024/3/6)
+
 # Automatically create Google forms
 1. 請先在您的Google雲端中建立一個名為`create_forms`的資料夾，並將此資料夾中所有的檔案放入雲端中的`create_forms`資料夾中
 2. 開始製作問卷前，先使用`randomly_select_images.ipynb`，為各類別取得隨機的100張圖片
