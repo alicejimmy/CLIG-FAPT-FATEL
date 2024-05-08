@@ -6,3 +6,7 @@
     * 資料夾"/select_images/small_mammals/"及資料夾"/select_images/trees/"中各自有隨機選取的500張小型哺乳類、樹的圖片
     * 圖片上傳至雲端資料夾需要一點時間，請耐心等候
 3. 使用create_forms製作問卷
+    * 開啟create_forms後，選擇工具列中的"擴充功能"中的"Apps Script"打開程式碼
+    * 執行前，記得將create_small_mammals_forms.gs及create_trees_forms.gs工具列中的"要執行的程式"切換到"mainSM"及"mainT"
+    * 執行前，記得修改create_small_mammals_forms.gs及create_trees_forms.gs中的參數folderUrl，修改為你自己Google雲端中資料夾"create_forms"的分享連結
+    * 記得要把資料夾"create_forms"的分享權限改為"知道連結的任何人"
