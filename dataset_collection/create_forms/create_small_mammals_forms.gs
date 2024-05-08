@@ -61,6 +61,7 @@ function makeForm(title, desc, folderUrl, option, questionsPerPage, questionsPer
 
   for (var i=0; i<imageID.length; i++) {
     if (i % questionsPerForm === 0) {
+      console.log('Making '+ i + ' question');
       form = FormApp.create(title + '(' + (i/questionsPerForm+1) + ')');
       form.setDescription(desc);
       var nameItem = form.addTextItem();
@@ -76,6 +77,7 @@ function makeForm(title, desc, folderUrl, option, questionsPerPage, questionsPer
       imgItem.setImage(img);
     } catch (e) {
       Utilities.sleep(500);
+      img = UrlFetchApp.fetch(imgUrl);
       imgItem.setImage(img);
     }
     
