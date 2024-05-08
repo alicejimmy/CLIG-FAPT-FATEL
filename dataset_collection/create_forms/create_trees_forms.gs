@@ -6,7 +6,7 @@ function getFolderId(folderUrl) {
 }
 
 // Save file name and ID to csv file
-function storeTAsCSV(imageID, folder) {
+function storeAsCSV(imageID, folder) {
   var formsFolder;
   if (folder.getFoldersByName("forms").hasNext()) {
     formsFolder = folder.getFoldersByName("forms").next();
@@ -29,7 +29,7 @@ function storeTAsCSV(imageID, folder) {
 }
 
 // Get the ID of all images in the google drive
-function getTImageID(folder) {
+function getImageID(folder) {
   var select_images_folder = folder.getFoldersByName('select_images').next();
   var images_folder = select_images_folder.getFoldersByName('trees').next();
   var files = images_folder.getFiles();
@@ -43,19 +43,19 @@ function getTImageID(folder) {
   }
   imageID.sort(function() {return (0.5-Math.random());});
   // Save file name and ID to csv file
-  storeTAsCSV(imageID, folder);
+  storeAsCSV(imageID, folder);
 
   return imageID
 }
 
 // make forms
-function makeTForm(title, desc, folderUrl, option, questionsPerPage, questionsPerForm) {
+function makeForm(title, desc, folderUrl, option, questionsPerPage, questionsPerForm) {
   // Get the ID of this URL in the google drive
   var folderId = getFolderId(folderUrl);
   var folder = DriveApp.getFolderById(folderId);
 
   // Get the ID of all images in the google drive
-  var imageID = getTImageID(folder);
+  var imageID = getImageID(folder);
   console.log(imageID[0][0])
   console.log("Start making forms")
 
@@ -97,9 +97,9 @@ function makeTForm(title, desc, folderUrl, option, questionsPerPage, questionsPe
   }
 }
 
-function mainT() {
+function main() {
   /* Remember to manually move the completed questionnaire to /create_forms/trees/ */
-  /* Remember to switch the executed function to mainT */
+  /* Remember to switch the executed function to main */
   /* Remember to change folderUrl to the URL of your own google drive */
 
   // The shared URL of the "create_forms" folder in the google drive
@@ -117,5 +117,5 @@ function mainT() {
   var option = ['楓樹', '橡樹', '棕櫚樹', '松樹', '柳樹'];
   
   // make forms
-  makeTForm(title, desc, folderUrl, option, questionsPerPage, questionsPerForm)
+  makeForm(title, desc, folderUrl, option, questionsPerPage, questionsPerForm)
 }
