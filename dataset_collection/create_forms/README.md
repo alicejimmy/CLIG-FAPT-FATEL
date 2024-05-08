@@ -24,7 +24,7 @@
 * `create_forms/select_images/cifar100_SM_T.zip`：2500張小型哺乳類的圖片及2500張樹的圖片
 * `create_forms/select_images/small_mammals.csv`：儲存隨機挑選500張小型哺乳類的檔名及正確類別
 * `create_forms/select_images/trees.csv`：儲存隨機挑選500張樹的檔名及正確類別
-* 資料夾`create_forms/select_images/small_mammals`：隨機挑選的500張小型哺乳類圖片
-* 資料夾`create_forms/select_images/trees`：隨機挑選的500張樹圖片
+* `create_forms/select_images/small_mammals`：隨機挑選的500張小型哺乳類圖片
+* `create_forms/select_images/trees`：隨機挑選的500張樹圖片
 * `create_forms/forms/small_mammals_imageID.csv`：儲存問卷中隨機排序後500張小型哺乳類圖片的順序
 * `create_forms/forms/trees_imageID.csv`：儲存問卷中隨機排序後500張樹圖片的順序
