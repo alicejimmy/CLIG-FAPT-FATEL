@@ -16,3 +16,13 @@
     * 成功執行後，`create_forms`底下將會出現一個名為`forms`的資料夾，內包含`small_mammals_imageID.csv`、`trees_imageID.csv`，另外你將在你的雲端主頁中得到5份small_mammals的問卷及5份trees的問卷，請手動將所有問卷移至`/create_forms/forms/`中
 4. 最後您可以使用這10份問卷收集真人標註的UPLL資料
 5. 標註收集結束後，整理問卷的code在此檔案的上一層資料夾`CLIG_FAPT_FATEL/dataset_collection/create_forms`中
+
+## 檔案介紹
+* `randomly_select_images.ipynb`：為每類別隨機選取100張圖片，並儲存至雲端
+* `create_small_mammals_forms.gs`：自動製作小型哺乳類的問卷
+* `create_trees_forms.gs`：自動製作樹的問卷
+* `cifar100_SM_T.zip`：2500張小型哺乳類的圖片及2500張樹的圖片
+* `small_mammals.csv`：儲存隨機挑選500張小型哺乳類的檔名及正確類別
+* `trees.csv`：儲存隨機挑選500張樹的檔名及正確類別
+* 資料夾`small_mammals`：隨機挑選的500張小型哺乳類圖片
+* 資料夾`trees`：隨機挑選的500張樹圖片
