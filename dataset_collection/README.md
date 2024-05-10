@@ -8,3 +8,7 @@
 * 為了方便標註者填寫，每份問卷被拆成5個小問卷，每個小問卷皆有100題
 * 標註者們問卷填寫的時間為(2024/2/21-2024/3/6)
 * 問卷製作的詳細情形請參考`CLIG_FAPT_FATEL/dataset_collection/create_forms/`中的檔案
+
+# CIFAR-10N
+* 本研究並無收集CIFAR10的UPLL資料集，我們使用公開資料集CIFAR-10N作為生成CIFAR10 UPLL資料集的參考
+* CIFAR-10N：http://noisylabels.com/
