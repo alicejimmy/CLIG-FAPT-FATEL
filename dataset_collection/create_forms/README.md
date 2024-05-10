@@ -43,8 +43,8 @@
 ### Google雲端中檔案的ID
 * 在Google雲端點選某個檔案將會進入預覽檔案模式，此時URL中的ID為目前資料夾的ID並非該檔案的ID
 * 若要查看該檔案的ID，請點選"在新視窗中開啟"，此時的URL中的ID為該檔案的ID
-   * 例如檔案：https://drive.google.com/file/d/1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP/view，其ID為1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP
-![image](https://github.com/alicejimmy/CLIG_FAPT_FATEL/assets/71706978/da052018-ccec-4d58-a2cb-f8a15594b3d3)
-![image](https://github.com/alicejimmy/CLIG_FAPT_FATEL/assets/71706978/02f72d9d-eae4-49de-913d-36a54cfc38f7)
+   * 例如檔案：https://drive.google.com/file/d/1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP/view ，其ID為1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP
+<img src="https://github.com/alicejimmy/CLIG_FAPT_FATEL/assets/71706978/da052018-ccec-4d58-a2cb-f8a15594b3d3" width="230" height="300">
+<img src="https://github.com/alicejimmy/CLIG_FAPT_FATEL/assets/71706978/02f72d9d-eae4-49de-913d-36a54cfc38f7">
 
 
