@@ -1,10 +1,10 @@
-import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from model.MLP import MLP, MLP2
-from model.resnet import resnet18
+from model.MLP import MLP
 
+# Reference https://github.com/wu-dd/PLCR/blob/main/wideresnet.py
+# wideresnet model of FAPT and FATEL
 class BasicBlock(nn.Module):
     def __init__(self, in_planes, out_planes, stride, dropRate=0.0):
         super(BasicBlock, self).__init__()
@@ -62,13 +62,8 @@ class WideResNet(nn.Module):
         # global average pooling and classifier
         self.bn1 = nn.BatchNorm2d(nChannels[3])
         self.relu = nn.ReLU(inplace=True)
-        
-        self.fc1 = nn.Linear(nChannels[3], num_classes)
-        # self.fc2 = nn.Linear(nChannels[3], nChannels[4])
-        # self.mlp1 = MLP(nChannels[3], nChannels[4], 2)
-        # self.mlp2 = MLP2(nChannels[3], nChannels[4], 3)
-        self.mlp3 = MLP(nChannels[3], nChannels[1], 2)
-
+        self.fc = nn.Linear(nChannels[3], num_classes)
+        self.mlp = MLP(nChannels[3], nChannels[1], 2)
         self.nChannels = nChannels[3]
 
         for m in self.modules():
@@ -79,34 +74,25 @@ class WideResNet(nn.Module):
                 m.bias.data.zero_()
             elif isinstance(m, nn.Linear):
                 m.bias.data.zero_()
-    def forward(self, x):
-        out = self.conv1(x)
-        out = self.block1(out)
-        out = self.block2(out)
-        out = self.block3(out)
-        out = self.relu(self.bn1(out))
-        out = F.avg_pool2d(out, 8)
-        out = out.view(-1, self.nChannels)
-        return self.fc1(out)
-        # feat = self.mlp3(out)
-        # logits = self.fc1(out)
-        # return  feat, logits
     
-    def forward_1(self, x): # Test3,Test4
-        out = self.encoder(x)
-        out = self.pretraining_head(out)
-        return out
+    def forward(self, x_ori, x_aug1=None, x_aug2=None, eval_only=False):
+        feature_ori = self.encoder(x_ori)
+        logits_ori = self.fc(feature_ori)
+        
+        if eval_only:
+            return logits_ori
+        
+        lowdim_feature_ori = self.mlp(feature_ori)
+        
+        feature_aug1 = self.encoder(x_aug1)
+        lowdim_feature_aug1 = self.mlp(feature_aug1)
+
+        feature_aug2 = self.encoder(x_aug2)
+        lowdim_feature_aug2 = self.mlp(feature_aug2)
+
+        return lowdim_feature_ori, lowdim_feature_aug1, lowdim_feature_aug2, logits_ori
     
-    def forward_2(self, x): # Test3,Test4
-        out = self.encoder(x)
-        out = self.classification_head(out)
-        return out
-    
-    def forward_encoder(self, x): # Test10
-        out = self.encoder(x)
-        return out
-    
-    def encoder(self, x): # Test3,Test4
+    def encoder(self, x):
         out = self.conv1(x)
         out = self.block1(out)
         out = self.block2(out)
@@ -116,13 +102,3 @@ class WideResNet(nn.Module):
         out = out.view(-1, self.nChannels)
         return out
     
-    def pretraining_head(self, x): # Test3,Test4
-        # out = self.fc2(x)
-        # out = self.mlp1(x)
-        # out = self.mlp2(x)
-        out = self.mlp3(x)
-        return out
-    
-    def classification_head(self, x): # Test3,Test4
-        out = self.fc1(x)
-        return out

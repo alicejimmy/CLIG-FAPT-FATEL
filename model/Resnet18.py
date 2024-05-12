@@ -1,12 +1,11 @@
-import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from model.MLP import MLP
 from model.resnet import resnet18
 
-class resnet18_model(nn.Module):
+# resnet18 model of FAPT and FATEL
+class Resnet18(nn.Module):
     def __init__(self, num_classes=10):
-        super(resnet18_model, self).__init__()
+        super(Resnet18, self).__init__()
 
         self.encoder = resnet18()
         self.fc = nn.Linear(512, num_classes)
@@ -28,15 +27,3 @@ class resnet18_model(nn.Module):
         lowdim_feature_aug2 = self.mlp(feature_aug2)
 
         return lowdim_feature_ori, lowdim_feature_aug1, lowdim_feature_aug2, logits_ori
-    
-    def forward_encoder(self, x):
-        out = self.encoder(x)
-        return out
-    
-    def pretraining_head(self, x):
-        out = self.mlp(x)
-        return out
-    
-    def classification_head(self, x):
-        out = self.fc(x)
-        return out

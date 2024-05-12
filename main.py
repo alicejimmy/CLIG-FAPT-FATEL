@@ -1,3 +1,4 @@
+import os
 import logging
 import time
 from datetime import datetime
@@ -5,16 +6,19 @@ import argparse
 from torch.backends import cudnn
 import torch
 import dataset
-from model.resnet18_model import resnet18_model
+from model.Resnet18 import Resnet18
 from model.wideresnet import WideResNet
-from algorithm_Test14 import Test14
+from FATEL import FATEL
+from FAPT import FAPT
 
 # Save log file
-log_filename = datetime.now().strftime("%Y%m%d_%H%M%S")
-log_path = "log/" + log_filename + ".log"
+if not os.path.exists('log'):
+    os.makedirs('log')
+log_filename = datetime.now().strftime('%Y%m%d_%H%M%S')
+log_path = 'log/' + log_filename + '.log'
 file_handler = logging.FileHandler(log_path)
 logging.basicConfig(format='[%(asctime)s] - %(message)s', datefmt='%Y/%m/%d %H:%M:%S', level=logging.DEBUG, handlers=[logging.StreamHandler(), file_handler])
-print("Log File save in : " + log_path)
+print('Log File save in : ' + log_path)
 
 # parameters
 parser = argparse.ArgumentParser(description='')
@@ -75,15 +79,15 @@ def main():
     
     # framework
     if args.framework == 'FAPT':
-        framework = Test14(train_loader, 1, args.warm_up, args.phi)
+        framework = FAPT(train_loader, args.warm_up, args.phi)
     elif args.framework == 'FATEL':
-        framework = Test14(train_loader, 4, args.warm_up, args.phi)
+        framework = FATEL(train_loader, args.warm_up)
     else:
         assert "Unknown framework"
 
     # model
     if args.model == 'resnet18':
-        model = resnet18_model(num_class)
+        model = Resnet18(num_class)
     elif args.model == 'wideresnet':
         model = WideResNet(34, num_class, widen_factor=10, dropRate=0.0)
     else:
@@ -106,10 +110,9 @@ def main():
         train_acc_history.append(trainacc)
         train_loss_history.append(trainloss)
         scheduler.step()
-        testacc, testloss = framework.validate(epoch, test_loader, model)
+        testacc, testloss = framework.test(test_loader, model)
         test_acc_history.append(testacc)
         test_loss_history.append(testloss)
-        # acc_history.append(testacc)
     
     logging.info('Max testing accuracy: {0} in {1} epoch!!!'.format(max(test_acc_history), test_acc_history.index(max(test_acc_history))))
 

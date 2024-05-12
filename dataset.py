@@ -7,8 +7,8 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 from torch.utils.data import DataLoader, TensorDataset
 from augment.data_augmentention import CIFAR10_Augmentention, CIFAR100_Augmentention
-from model.resnet18_model import resnet18_model
-from algorithm.utils import accuracy
+from model.Resnet18 import Resnet18
+from utils import accuracy
 
 # CIFAR10
 def cifar10_dataloader(batch_size, creation_method='CLIG', partial_rate=0.1, noisy_rate=0.2, data_ratio=1.0):
@@ -485,7 +485,7 @@ def get_predict_matrix(train_data, train_labels, dataset_name):
         model_filename = 'cifar100_SM_20240306_222558.pt'
     elif dataset_name=='cifar100_trees':
         model_filename = 'cifar100_T_20240306_223005.pt'
-    model = resnet18_model(num_class)
+    model = Resnet18(num_class)
     model.load_state_dict(torch.load('made_labelset_model/'+ model_filename))
 
     # Obtain the prediction probability by the model

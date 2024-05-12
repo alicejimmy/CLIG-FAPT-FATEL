@@ -1,3 +1,5 @@
+# https://github.com/hbzju/PiCO/blob/main/resnet.py
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
