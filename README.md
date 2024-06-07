@@ -7,3 +7,27 @@ pip install wheel==0.41.2
 pip install pandas==2.2.1
 pip install Pillow==9.3.0
 pip install numpy==1.24.1
+
+
+
+docker build -t fapt_fatel_image -f Dockerfile/Dockerfile .
+
+docker run \
+--gpus '"device=0"' \
+--name alicejimmy_final_test \
+-it \
+-v $HOME/ShareToContainer/:/home/ShareToContainer \
+-p 15700:8888 \
+-p 15701:22 \
+-p 15702:3389 \
+--shm-size="10g" \
+fapt_fatel_image
+
+docker start alicejimmy_final_test
+docker exec -it alicejimmy_final_test /bin/bash
+開始使用指令跑code
+
+先用passwd修改其中root及user的密碼
+/etc/init.d/ssh restart
+ssh root@140.115.59.238 -p 15701
+開始使用指令跑code
