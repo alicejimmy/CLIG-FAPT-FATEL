@@ -49,16 +49,16 @@ We use the following five image datasets:
 * We provide trained models $M$ in `CLIG-FAPT-FATEL/made_labelset_model`.
 * If needed, you can use `made_labelset_model.py` to train your own model $M$.
 * Usage:
+    * Training model $M$ on CIFAR10 dataset
     ```python=
-    # Training model M on CIFAR10 dataset
     python made_labelset_model.py --epochs 200 --dataset cifar10 --lr 0.01 --momentum 0.9 --wd 1e-3 --target_acc 97.86 --deviation 0.1
     ```
+    * Training model $M$ on CIFAR100_SM
     ```python=
-    # Training model M on CIFAR100_SM
     python made_labelset_model.py --epochs 200 --dataset cifar100_SM --lr 0.1 --momentum 0.95 --wd 1e-4 --target_acc 96.60 --deviation 2
     ```
+    * Training model $M$ on CIFAR100_T
     ```python=
-    # Training model M on CIFAR100_T
     python made_labelset_model.py --epochs 200 --dataset cifar100_T --lr 0.1 --momentum 0.95 --wd 1e-4 --target_acc 94.19 --deviation 2
     ```
 * Options:
@@ -78,46 +78,46 @@ We use the following five image datasets:
 ## Quick Start
 ### Start Running FAPT
 * Usage:
+    * Run FAPT on CIFAR10 dataset
     ```python=
-    # Run FAPT on CIFAR10 dataset
     python main.py --epochs 800 --model resnet18 --dataset cifar10 --creation_method CLIG --framework FAPT --lr 0.01 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FAPT on CIFAR100_SM dataset
     ```python=
-    # Run FAPT on CIFAR100_SM dataset
     python main.py --epochs 500 --model resnet18 --dataset cifar100_SM --creation_method CLIG --framework FAPT --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FAPT on CIFAR100_T dataset
     ```python=
-    # Run FAPT on CIFAR100_T dataset
     python main.py --epochs 500 --model resnet18 --dataset cifar100_T --creation_method CLIG --framework FAPT --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FAPT on CIFAR100_SM_500 dataset
     ```python=
-    # Run FAPT on CIFAR100_SM_500 dataset
     python main.py --epochs 200 --model resnet18 --dataset cifar100_SM_500 --creation_method CLIG --framework FAPT --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FAPT on CIFAR100_T_500 dataset
     ```python=
-    # Run FAPT on CIFAR100_T_500 dataset
     python main.py --epochs 200 --model resnet18 --dataset cifar100_T_500 --creation_method CLIG --framework FAPT --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
 ### Start Running FATEL
 * Usage:
+    * Run FATEL on CIFAR10 dataset
     ```python=
-    # Run FATEL on CIFAR10 dataset
     python main.py --epochs 800 --model resnet18 --dataset cifar10 --creation_method CLIG --framework FATEL --lr 0.01 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FATEL on CIFAR100_SM dataset
     ```python=
-    # Run FATEL on CIFAR100_SM dataset
     python main.py --epochs 500 --model resnet18 --dataset cifar100_SM --creation_method CLIG --framework FATEL --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FATEL on CIFAR100_T dataset
     ```python=
-    # Run FATEL on CIFAR100_T dataset
     python main.py --epochs 500 --model resnet18 --dataset cifar100_T --creation_method CLIG --framework FATEL --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FATEL on CIFAR100_SM_500 dataset
     ```python=
-    # Run FATEL on CIFAR100_SM_500 dataset
     python main.py --epochs 200 --model resnet18 --dataset cifar100_SM_500 --creation_method CLIG --framework FATEL --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
+    * Run FATEL on CIFAR100_T_500 dataset
     ```python=
-    # Run FATEL on CIFAR100_T_500 dataset
     python main.py --epochs 200 --model resnet18 --dataset cifar100_T_500 --creation_method CLIG --framework FATEL --lr 0.005 --momentum 0.9 --wd 1e-3 --warm_up 10 --phi 0.9
     ```
 ### Options
