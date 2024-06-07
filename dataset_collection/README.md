@@ -1,15 +1,20 @@
-# Collect UPLL dataset details
-* 本研究共收集了兩份問卷，標註者的標註結果分別儲存在`small_mammals_result.csv`、`trees_result.csv`
-* 為了保護標註者們的個資，整理後的標註結果`small_mammals_result.csv`及`trees_result.csv`將以0~10代表每位標註者
-* 標註者共11人，包含作者本人
-* 每份問卷皆有500題單選題，每題會給一張隨機的圖片及五個選項，標註者將選出他認為這張圖會是哪個物種的圖片
+# Collect Human-annotated Labels of UPLL Dataset
+## CIFAR100_SM_500, CIFAR100_T_500
+* This research collected human-annotated labels for CIFAR100_SM_500 and CIFAR100_T_500, and the results are stored in `small_mammals_result.csv` and `trees_result.csv`, respectively.
+    * To protect the privacy of the annotators, we represent each annotator with a number from 0 to 10.
+* Considering time and manpower constraints, this research randomly selected 500 training set images from CIFAR100_SM and CIFAR100_T for annotation.
+    * CIFAR100_SM_500 includes five categories: hamster, mouse, rabbit, shrew, and squirrel.
+    * CIFAR100_T_500 includes five categories: maple, oak, palm, pine, and willow.
+* There are a total of 11 annotators, including the author.
+    * Each annotator annotated 500 small mammal dataset images and 500 tree dataset images.
+    * Each annotator received 30 minutes of educational training before annotating images. The training content was to familiarize annotators with the characteristics of each category of animals and trees.
+    * All annotators were required to complete the classification of all images within two weeks (2024/2/21~2024/3/6).
+* We used google forms to collect the annotations of each annotator. Each form consisted of 500 choice questions, with each question providing a random image and five options for the annotator to select the species they believe the image represents. An example is shown below:<br>
   <img src="https://github.com/alicejimmy/CLIG_FAPT_FATEL/assets/71706978/b8b2e50a-9aa3-4a5e-9721-fbb298c4ef2e" width="600" height="370">
+* To facilitate annotators' completion, each questionnaire was divided into five smaller questionnaires, each with 100 questions.
+* For detailed instructions on creating questionnaires, please refer to: `CLIG-FAPT-FATEL/dataset_collection/create_forms/`
 
-* 為了方便標註者填寫，每份問卷被拆成5個小問卷，每個小問卷皆有100題
-* 標註者們問卷填寫的時間為(2024/2/21-2024/3/6)
-* 問卷製作的詳細情形請參考`CLIG_FAPT_FATEL/dataset_collection/create_forms/`中的檔案
-
-# CIFAR-10N
-* `CIFAR-10_human.pt`為CIFAR-10N的標註結果
-* 本研究並無收集CIFAR10的UPLL資料集，我們使用公開資料集CIFAR-10N作為生成CIFAR10 UPLL資料集的參考
-* CIFAR-10N：http://noisylabels.com/
+## CIFAR-10N
+* `CIFAR-10_human.pt` contains the human-annotated results of CIFAR-10N.
+* This research did not collect human-annotated labels for CIFAR10's UPLL dataset. We used the publicly available dataset CIFAR-10N as a reference for generating the CIFAR10 UPLL dataset.
+* For more details on CIFAR-10N, please refer to: http://noisylabels.com/
