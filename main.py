@@ -40,7 +40,7 @@ parser.add_argument('--wd', default=1e-3, type=float,
 parser.add_argument('--framework', default='FAPT', type=str, choices=['FAPT', 'FATEL'], 
                     help='UPLL framework name')
 parser.add_argument('--creation_method', default='CLIG', type=str, choices=['CLIG', 'APLG'], 
-                    help='How to generate a data set')
+                    help='How to generate a dataset')
 parser.add_argument('--partial_rate', default=0.1, type=float, 
                     help='For APLG. The probability that each class (except the true label) will be added to the candidate labelset.')
 parser.add_argument('--noisy_rate', default=0.3, type=float, 
@@ -49,7 +49,7 @@ parser.add_argument('--noisy_rate', default=0.3, type=float,
 parser.add_argument('--warm_up', default=10, type=int, 
                     help='= R, number of warm-up epochs')
 parser.add_argument('--phi', default=0.9, type=float, 
-                    help='= phi, pseudo target update ratio')
+                    help='= phi. For FAPT, pseudo target update ratio')
 parser.add_argument('--data_ratio', default=1.0, type=float, 
                     help='For the experiment of reduce the amount of data. Control the amount of training data.')
 args = parser.parse_args()
