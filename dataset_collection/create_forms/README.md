@@ -1,50 +1,60 @@
 # Automatically create Google forms
-## 程式使用步驟
-1. 請先在您的Google雲端中建立一個名為`create_forms`的資料夾，並將此資料夾中所有的檔案放入雲端中的`create_forms`資料夾中
-2. 開始製作問卷前，先使用`randomly_select_images.ipynb`，為各類別取得隨機的100張圖片
-    * 請依序執行此程式
-    * 成功執行後，`create_forms`底下將會出現一個名為`select_images`的資料夾，內包含`cifar100_SM_T.zip`、`small_mammals.csv`、`trees.csv`、資料夾`small_mammals`、資料夾`trees`
-    * 資料夾`/select_images/small_mammals/`及資料夾`/select_images/trees/`中各自有隨機選取的500張小型哺乳類、樹的圖片
-    * 圖片上傳至雲端資料夾需要一點時間，請耐心等候
-3. 在資料夾`create_forms`中建立一個名為`forms`的Google試算表
-    * 開啟`forms`後，選擇工具列中的"擴充功能"中的"Apps Script"打開Google Apps Script
-    * 將`create_small_mammals_forms.gs`或`create_trees_forms.gs`中的所有內容複製貼上至`程式碼.gs`並執行
-    * 請分開執行`create_small_mammals_forms.gs`及`create_trees_forms.gs`，一次執行一個
-    * 執行前，記得將工具列中的"要執行的程式"切換到"mainSM"及"mainT"
-    * 執行前，記得修改參數folderUrl，修改為你自己Google雲端中資料夾`create_forms`的分享連結
-    * 記得要把資料夾`create_forms`的分享權限改為"知道連結的任何人"
-    * 成功執行後，`create_forms`底下將會出現一個名為`forms`的資料夾，內包含`small_mammals_imageID.csv`、`trees_imageID.csv`，另外你將在你的雲端主頁中得到5份small_mammals的問卷及5份trees的問卷，請手動將所有問卷移至`/create_forms/forms/`中
-4. 之後您將可以使用這10份問卷收集真人標註的UPLL資料
-5. 標註收集結束後，可以使用`organize_forms_result.ipynb`整理問卷結果
-    * 執行前，記得修改參數true_label_ID, form_order_ID, form_result_IDs，修改為你自己Google雲端中各檔案的ID
-    * 成功執行後，`create_forms`中將會出現`result.csv`
+## Steps for usage
+1. create a folder named `create_forms` in your Google Drive and place all the files from this page into the `create_forms` folder.
+2. Before starting to create the forms, use `randomly_select_images.ipynb` to obtain random 100 images for each class.
+   * Execute each cell sequentially.
+   * Upon successful execution of all cells, the folder `create_forms/select_images` will appear.
+      * It contains `cifar100_SM_T.zip`, `small_mammals.csv`, `trees.csv`, `small_mammals` folder, and `trees` folder.
+         * The `small_mammals` and `trees` folders each contain randomly selected 500 images.
+   * Uploading images to the cloud folder may take some time, so please be patient.
+3. Create a Google Sheets named `forms` in the `create_forms` folder.
+   * Open `forms`, and then open Google Apps Script.
+      * Extensions -> Apps Script.
+   * Copy and paste the content of `create_small_mammals_forms.gs` or `create_trees_forms.gs` into `code.gs` and run it.
+      * Remember to run `create_small_mammals_forms.gs` and `create_trees_forms.gs` separately. One at a time.
+      * Before execution, remember to switch to the "main" function.
+      * Before execution, remember to modify the parameter "folderUrl" to the shareable link of your `create_forms` folder in your Google Drive.
+         * Remember to change the sharing permission of the `create_forms` folder to "Anyone with the link".
+   * Upon successful execution, the following will appear in your Google Drive:
+      * `create_forms/forms/small_mammals_imageID.csv`
+      * `create_forms/forms/trees_imageID.csv`
+      * Five small mammal forms and five tree forms on the main page of your cloud storage.
+         * Manually move all the forms to `create_forms/forms/`.
+4. Now you can use these 10 forms to collect Human-annotated Labels of UPLL Dataset.
+5. After finish collecting the labels, you can use `organize_forms_result.ipynb` to organize the results of forms.
+   * Before execution, remember to modify the parameters `true_label_ID`, `form_order_ID`, `form_result_IDs` to the IDs of your own files.
+   * Upon successful execution, `create_forms/result.csv` will appear.
 
-## 檔案介紹
-所有程式執行結束後，雲端中應該有以下檔案
-### `create_forms/`中
-* `randomly_select_images.ipynb`：為每類別隨機選取100張圖片，並儲存至雲端
-* `forms`：Google試算表，用於自動製作樹的問卷
-   * `forms`的Apps Script中`create_small_mammals_forms.gs`：自動製作小型哺乳類的問卷
-   * `forms`的Apps Script中`create_trees_forms.gs`：自動製作樹的問卷
-* `organize_forms_result.ipynb`：整理問卷調查結果
-* `result.csv`：small_mammals或trees的問卷調查結果整理
-### `create_forms/select_images/`中
-* `cifar100_SM_T.zip`：2500張小型哺乳類的圖片及2500張樹的圖片
-* `small_mammals.csv`：儲存隨機挑選500張小型哺乳類的檔名及正確類別
-* `trees.csv`：儲存隨機挑選500張樹的檔名及正確類別
-* `small_mammals`：隨機挑選的500張小型哺乳類圖片
-* `trees`：隨機挑選的500張樹圖片
-### `create_forms/forms/`中
-* `small_mammals_imageID.csv`：儲存問卷中隨機排序後500張小型哺乳類圖片的順序
-* `trees_imageID.csv`：儲存問卷中隨機排序後500張樹圖片的順序
-* 5份小型哺乳類的Google問卷
-* 5份樹的Google問卷
-## 補充說明
-### Google雲端中檔案的ID
-* 在Google雲端點選某個檔案將會進入預覽檔案模式，此時URL中的ID為目前資料夾的ID並非該檔案的ID
-* 若要查看該檔案的ID，請點選"在新視窗中開啟"，此時的URL中的ID為該檔案的ID
-   * 例如檔案：https://drive.google.com/file/d/1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP/view ，其ID為1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP
-<img src="https://github.com/alicejimmy/CLIG_FAPT_FATEL/assets/71706978/da052018-ccec-4d58-a2cb-f8a15594b3d3" width="230" height="300">
-<img src="https://github.com/alicejimmy/CLIG_FAPT_FATEL/assets/71706978/02f72d9d-eae4-49de-913d-36a54cfc38f7">
+## File Description
+After all codes are executed, you will get the following files in Google Drive:
 
+### In `create_forms/`
+* `randomly_select_images.ipynb`: Randomly selects 100 images for each class and saves them to the Google Drive.
+* `forms`: A Google Sheets used to automatically create forms.
+   * `create_small_mammals_forms.gs`: Automatically creates forms for small mammals.
+   * `create_trees_forms.gs`: Automatically creates forms for trees.
+* `organize_forms_result.ipynb`: Organizes the results of forms.
+* `result.csv`: Organized  results of forms for small mammals or trees.
 
+### In `create_forms/select_images/`
+* `cifar100_SM_T.zip`: 2500 images of small mammals and 2500 images of trees.
+* `small_mammals.csv`: Randomly selected filenames and their ground-truth labels for 500 small mammal images.
+* `trees.csv`: Randomly selected filenames and their ground-truth labels for 500 tree images.
+* `small_mammals`: Stores randomly selected 500 images of small mammals.
+* `trees`: Stores randomly selected 500 images of trees.
+
+### In `create_forms/forms/`
+* `small_mammals_imageID.csv`: The order of 500 randomly arranged small mammal images in the form.
+* `trees_imageID.csv`: The order of 500 randomly arranged tree images in the form.
+* Five Google froms for small mammals.
+* Five Google forms for trees.
+
+## Supplementary information
+### IDs of files in Google Drive
+* Clicking on a file in Google Drive will enter the preview mode of this file. The ID in the URL at this time is the ID of this current folder, not the ID of this file.
+* To view the ID of this file, please click "Open in new window". The ID in the URL at this time is the ID of this file.<br>
+  For example: <br>
+  The URL of a file: https://drive.google.com/file/d/1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP/view <br>
+  The ID of this file: 1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP
+
+![image](https://hackmd.io/_uploads/SkpeJjgBR.png)
