@@ -57,4 +57,4 @@ After all codes are executed, you will get the following files in Google Drive:
   The URL of a file: https://drive.google.com/file/d/1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP/view <br>
   The ID of this file: 1AemdxSabDnYd_XbVMcgDFeOqOe9ZG4nP
 
-![image](https://hackmd.io/_uploads/SkpeJjgBR.png)
+![image](https://github.com/alicejimmy/CLIG-FAPT-FATEL/assets/71706978/7940e5bc-30e9-4cb4-9727-9a655f973e72)
