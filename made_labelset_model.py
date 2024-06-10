@@ -5,9 +5,8 @@ import argparse
 from torch.backends import cudnn
 import torch
 import dataset
-from model.resnet18_model import resnet18_model
-from algorithm.utils import AverageMeter
-from algorithm.utils import accuracy
+from model.Resnet18 import Resnet18
+from utils import AverageMeter, accuracy
 
 # Save log file
 log_filename = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -57,7 +56,7 @@ def main():
     
     # model
     if args.model == 'resnet18':
-        model = resnet18_model(num_class)
+        model = Resnet18(num_class)
     else:
         assert "Unknown model"
     model = model.cuda()
