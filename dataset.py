@@ -58,7 +58,7 @@ def cifar10_dataloader(batch_size, creation_method='CLIG', partial_rate=0.1, noi
     labelset_reality[torch.arange(num_data), random_label1] = 1
     labelset_reality[torch.arange(num_data), random_label2] = 1
     labelset_reality[torch.arange(num_data), random_label3] = 1
-    labelset[torch.arange(num_data), worst_label] = 1
+    labelset_reality[torch.arange(num_data), worst_label] = 1
 
     jaccard_similarity = 0
     for i in range(num_data):
